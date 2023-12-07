@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-app-f994c": {
+      "hosting": {
+        "firebaseapp": [
+          "fir-app-f994c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-app-f994c"
+  }
+}

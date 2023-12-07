@@ -1,0 +1,90 @@
+.container {
+    max-width: 650px;
+    margin: 150px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      margin: 20px;
+    }
+  
+    span {
+      color: #999;
+    }
+  
+    .fields-container {
+      display: flex;
+      flex-wrap: nowrap;
+      max-width: 70%;
+  
+      mat-form-field {
+        margin: 25px 10px 0 10px;
+  
+        &.focused {
+          ::ng-deep {
+            .mat-mdc-text-field-wrapper {
+              border: 2px solid #3f51b5;
+              border-radius: 6px;
+              box-sizing: border-box;
+            }
+          }
+        }
+  
+        input {
+          text-align: center;
+          color: #3f51b5;
+          font-weight: bold;
+        }
+      }
+    }
+  
+    mat-icon {
+      font-size: 90px;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 20px;
+    }
+  
+    .keyboard-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      flex: 1;
+      justify-content: flex-end;
+      margin: 65px 0;
+      align-items: center;
+      cursor: pointer;
+  
+      .keyboard-line {
+        display: flex;
+        justify-content: center;
+        height: 60px;
+        width: 80%;
+  
+        span {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 32px;
+          font-family: var(--ion-font-family-light);
+          color: #1b1b1b;
+  
+          mat-icon {
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+  
+    button {
+      margin: 65px 0;
+      width: 300px;
+    }
+  }
