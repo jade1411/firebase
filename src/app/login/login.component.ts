@@ -6,48 +6,7 @@ import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <div class="container">
-      <mat-spinner *ngIf="loading"></mat-spinner>
-      <h1>Login</h1>
-      <form [formGroup]="loginForm">
-        <mat-form-field appearance="outline">
-          <mat-label>E-mail</mat-label>
-          <input type="email" matInput formControlName="email" />
-          <mat-error
-            *ngIf="
-              loginForm.get('email')?.hasError('email') &&
-              !loginForm.get('email')?.hasError('required')
-            "
-          >
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-            Email is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            matInput
-            formControlName="password"
-          />
-          <mat-icon matSuffix (click)="toggleDisplayPassword()">{{
-            showPassword ? 'visibility' : 'visibility_off'
-          }}</mat-icon>
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-            Password is required
-          </mat-error>
-        </mat-form-field>
-        <button mat-flat-button color="primary" (click)="login()">Login</button>
-      </form>
-      <div class="sign-up">
-        Don't you have an account ?
-        <a [routerLink]="['/', 'registration']">Sign up</a>
-      </div>
-    </div>
-  `,
+  templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {

@@ -4,10 +4,7 @@ import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <p>Congratulation ! You have logged in successfully !</p>
-    <button mat-flat-button color="primary" (click)="logout()">Logout</button>
-  `,
+  templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {

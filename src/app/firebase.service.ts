@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
+import { FirebaseApp, initializeApp } from 'firebase/app';
 import {
+  Auth,
   UserCredential,
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,6 +11,8 @@ import {
 } from 'firebase/auth';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAgB4Ax_UNmfwNObtvvJRcUB-XqT_YEgro",
@@ -25,14 +28,14 @@ const firebaseConfig = {
   providedIn: 'root',
 })
 export class FirebaseService {
-  app = initializeApp(firebaseConfig);
-  auth = getAuth();
+  private readonly app: FirebaseApp = initializeApp(firebaseConfig);
+  private readonly auth: Auth = getAuth(this.app);
   checkEmailVerificationCode: any;
 
   constructor() {
-    // The onAuthStateChanged will be triggered when the user login, logout
-    // and when the user register also.
-    // That's how the user is saved/removed in localStorage 
+    this.app = initializeApp(firebaseConfig);
+    this.auth = getAuth(this.app);
+  
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
@@ -40,16 +43,20 @@ export class FirebaseService {
         localStorage.removeItem('user');
       }
     });
-  }
+  
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
 
- 
+    }
+  }
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  logout() {
+  logout(): Promise<void> {
     return signOut(this.auth).then(() => {
-      localStorage.removeItem('user');
+    localStorage.removeItem('user');
     });
+    }
   }
-}

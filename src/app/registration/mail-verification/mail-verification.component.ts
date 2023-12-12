@@ -5,62 +5,7 @@ import { FirebaseService } from 'src/app/firebase.service';
 
 @Component({
   selector: 'app-mail-verification',
-  template: `
-    <div class="container">
-      <mat-spinner *ngIf="loading"></mat-spinner>
-      <mat-icon>security</mat-icon>
-      <h1>Verify your Email</h1>
-      <span
-        >An 6-digit code has been sent to
-        <a [href]="'mailto:' + user.email">{{ user.email }}</a></span
-      >
-      <div class="fields-container">
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 0 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[0]" readonly />
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 1 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[1]" readonly />
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 2 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[2]" readonly />
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 3 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[3]" readonly />
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 4 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[4]" readonly />
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [ngClass]="{ focused: cursor === 5 }"
-        >
-          <input matInput [(ngModel)]="codeDigits[5]" readonly />
-        </mat-form-field>
-      </div>
-      <span
-        >Didn't recive the code ?
-        <a href="" (click)="resendVerificationCode()">Resend</a></span
-      >
-      <button mat-flat-button color="primary" (click)="verifyCode()">
-        Verifiy
-      </button>
-    </div>
-  `,
+  templateUrl: './mail-verification.component.html',
   styleUrls: ['./mail-verification.component.scss'],
 })
 export class MailVerificationComponent implements OnInit {
